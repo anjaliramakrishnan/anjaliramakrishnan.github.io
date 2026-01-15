@@ -197,73 +197,6 @@
             opacity: 0.6;
         }
 
-        .contact-intro {
-            margin-bottom: 40px;
-        }
-
-        form {
-            max-width: 600px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            letter-spacing: 0.3px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px 16px;
-            font-family: 'Crimson Pro', serif;
-            font-size: 15px;
-            color: var(--text-primary);
-            background-color: white;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        button[type="submit"] {
-            background-color: var(--bg-nav);
-            color: var(--text-nav);
-            padding: 14px 32px;
-            font-family: 'Crimson Pro', serif;
-            font-size: 15px;
-            font-weight: 400;
-            letter-spacing: 0;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        button[type="submit"]:hover {
-            background-color: var(--text-primary);
-            color: white;
-            border-color: var(--text-primary);
-        }
-
         @media (max-width: 968px) {
             nav {
                 width: 200px;
@@ -342,10 +275,10 @@
     <nav>
         <div class="nav-logo">Anjali Ramakrishnan</div>
         <ul class="nav-links">
-            <li><a href="#about" class="nav-link active" data-section="about">About</a></li>
-            <li><a href="#research" class="nav-link" data-section="research">Research</a></li>
-            <li><a href="#playwriting" class="nav-link" data-section="playwriting">Playwriting etc.</a></li>
-            <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            <li><a href="javascript:void(0);" class="nav-link active" onclick="showSection('about')">About</a></li>
+            <li><a href="javascript:void(0);" class="nav-link" onclick="showSection('research')">Research</a></li>
+            <li><a href="javascript:void(0);" class="nav-link" onclick="showSection('playwriting')">Playwriting etc.</a></li>
+            <li><a href="javascript:void(0);" class="nav-link" onclick="showSection('contact')">Contact</a></li>
         </ul>
     </nav>
 
@@ -403,7 +336,7 @@
             
             <div class="divider"></div>
             
-            <p>Below are selected plays and other creative projects. For full drafts, you can either read with a <a href="https://newplayexchange.org/" class="text-link" target="_blank">New Play Exchange</a>, or just email me at <a href="/cdn-cgi/l/email-protection#b7d6d9ddd6dbdec5f7d0dad6dedb99d4d8da" class="text-link"><span class="__cf_email__" data-cfemail="70111e1a111c190230171d11191c5e131f1d">[email&#160;protected]</span></a> and I'll very happily send them to you. For more details on experiences and productions, you can go to my resumé here.</p>
+            <p>Below are selected plays and other creative projects. For full drafts, you can either read with a <a href="https://newplayexchange.org/" class="text-link" target="_blank">New Play Exchange</a>, or just email me at <a href="mailto:anjalir@gmail.com" class="text-link">anjalir@gmail.com</a> and I'll very happily send them to you. For more details on experiences and productions, you can go to my resumé here.</p>
 
             <div class="content-block">
                 <h4>Sense and Sensibility: 1976</h4>
@@ -449,13 +382,21 @@
         </section>
     </main>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                navLinks.forEach(l => l.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-          
+    <script>
+        function showSection(sectionId) {
+            var sections = document.getElementsByTagName('section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+            
+            var links = document.getElementsByClassName('nav-link');
+            for (var i = 0; i < links.length; i++) {
+                links[i].classList.remove('active');
+            }
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
